@@ -1,0 +1,39 @@
+@import "tailwindcss";
+@source "../components";
+@source "../app";
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+  --neon-cyan: #00F0FF;
+  --neon-magenta: #FF00C8;
+  --secondary-bg: #111111;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-jetbrains-mono), monospace;
+}
+
+/* Custom Scrollbar for "Pro" feel */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-cyan);
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
