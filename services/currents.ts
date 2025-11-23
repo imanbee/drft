@@ -9,6 +9,8 @@ export interface DataSource {
   id: string;
   name: string;
   description: string;
+  infoUrl: string;
+  qualityDescription: string;
   getGrid: (
     bounds: [number, number, number, number],
     timestamp: number,

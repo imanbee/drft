@@ -10,7 +10,17 @@ import { DATA_SOURCES } from '../services/currents';
 import { generateGrid } from '../utils/gridGenerator';
 import { format } from 'date-fns';
 
-const INITIAL_VIEW_STATE = {
+interface ViewState {
+  longitude: number;
+  latitude: number;
+  zoom: number;
+  pitch: number;
+  bearing: number;
+  transitionDuration?: number;
+  transitionInterpolator?: any;
+}
+
+const INITIAL_VIEW_STATE: ViewState = {
   longitude: 4.27,
   latitude: 52.11,
   zoom: 11,
@@ -26,8 +36,9 @@ export default function RaceMap() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [playbackSpeed, setPlaybackSpeed] = useState(100); // 100x real time
   const [activeSourceId, setActiveSourceId] = useState(DATA_SOURCES[0].id);
+  const [infoPopupSourceId, setInfoPopupSourceId] = useState<string | null>(null);
 
-  const [viewState, setViewState] = useState(INITIAL_VIEW_STATE);
+  const [viewState, setViewState] = useState<ViewState>(INITIAL_VIEW_STATE);
 
   useEffect(() => {
     // Fetch and parse GPX
